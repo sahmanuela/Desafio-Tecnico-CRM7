@@ -12,3 +12,9 @@ export const createUser = async (user) => {
     const createdUser = await User.create(user)
     return createdUser
 }
+
+export const deleteUser = async (id) => {
+    await databaseConnection()
+    await User.findByIdAndDelete(id)
+}
+
