@@ -1,9 +1,14 @@
-let users = []
+import databaseConnection from '../utils/database'
+import User from '../models/user'
 
-export const listUsers = () => {
-    return []
+export const listUsers = async () => {
+    await databaseConnection()
+    const users = await User.find()
+    return users
 }
 
-export const createUser = (user) => {
-    users.push(user)
+export const createUser = async (user) => {
+    await databaseConnection()
+    const createdUser = await User.create(user)
+    return createdUser
 }
